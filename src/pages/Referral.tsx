@@ -53,7 +53,7 @@ const Referral = () => {
               Referral
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 mb-3 leading-tight focus:outline-none focus:shadow-outline font-serif"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline font-serif"
               id="Referral"
               type="text"
               value={referralCode}

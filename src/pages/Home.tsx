@@ -1,6 +1,7 @@
 import hashCaseLogo from "../../public/hashcaselogo.png";
-import { Copy } from "lucide-react";
+import { ArrowRight, Copy } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 interface User {
   badges: string;
@@ -54,15 +55,30 @@ const Home = () => {
             Join the <span className="text-[#CFA9FB]">HashCase</span> <br />{" "}
             Referral Program
           </h1>
-          <button className="px-4 py-2 bg-gray-100 text-black font-semibold text-lg tracking-wide">
-            {storedResponse.user.referral_code} <Copy onClick={copyClipboard} />
-          </button>
+          <div className="flex items-center gap-x-4 justify-between">
+            <button className="px-4 py-2 flex gap-x-2 items-center bg-gray-100 text-black font-semibold text-lg tracking-wide rounded-md my-4">
+              {storedResponse.user.referral_code}{" "}
+              <Copy onClick={copyClipboard} />
+            </button>
+            <Link to="/total-referral">
+              <button className="px-4 py-2 flex gap-x-2 items-center bg-gray-100 text-black font-semibold text-lg tracking-wide rounded-md my-4">
+                See your Referrals <ArrowRight />
+              </button>
+            </Link>
+          </div>
         </div>
       ) : (
-        <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
-          Join the <span className="text-[#CFA9FB]">HashCase</span> <br />{" "}
-          Referral Program
-        </h1>
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
+            Join the <span className="text-[#CFA9FB]">HashCase</span> <br />{" "}
+            Referral Program
+          </h1>
+          <Link to="/signup">
+            <button className="px-4 py-2 bg-gray-100 text-black font-semibold text-lg tracking-wide rounded-md my-4">
+              SignUp
+            </button>
+          </Link>
+        </div>
       )}
 
       <Toaster />

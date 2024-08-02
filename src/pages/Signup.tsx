@@ -61,7 +61,7 @@ const Signup = () => {
               Email
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:shadow-outline font-serif"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline font-serif"
               id="email"
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
@@ -77,7 +77,7 @@ const Signup = () => {
               Phone Number
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 mb-3 leading-tight focus:outline-none focus:shadow-outline font-serif"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline font-serif"
               id="phone number"
               type="text"
               value={user.phoneNumber}
