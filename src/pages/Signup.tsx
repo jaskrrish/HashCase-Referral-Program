@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Domain } from "../utils/constants";
 
 interface User {
   email: string;
@@ -31,11 +32,9 @@ const Signup = () => {
         identifier: user.phoneNumber,
       };
 
-      const response = await axios.post(
-        "https://cbb7-110-224-92-238.ngrok-free.app/dev/register-user",
-        body,
-        { headers }
-      );
+      const response = await axios.post(`${Domain}/dev/register-user`, body, {
+        headers,
+      });
       console.log("Signup success", response.data);
       localStorage.setItem("responseData", JSON.stringify(response.data));
       notify(response.data.message);

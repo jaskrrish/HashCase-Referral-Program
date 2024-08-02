@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { Domain } from "../utils/constants";
 
 const Referral = () => {
   const router = useNavigate();
@@ -23,10 +24,7 @@ const Referral = () => {
       };
       console.log(body);
 
-      const response = await axios.post(
-        "https://cbb7-110-224-92-238.ngrok-free.app/user/add-referral",
-        body
-      );
+      const response = await axios.post(`${Domain}/user/add-referral`, body);
       console.log(response.data);
       notify(response.data.message);
       localStorage.setItem("referralResponse", JSON.stringify(response.data));

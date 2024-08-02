@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { LoaderCircle } from "lucide-react";
+import { Domain } from "../utils/constants";
 
 interface User {
   badges: string;
@@ -22,6 +24,7 @@ const TotalReferral = () => {
   const storedResponse: ResponseData = JSON.parse(
     localStorage.getItem("responseData") || "{}"
   );
+  const [loading, setLoading] = useState(false);
 
   const [tableData, setTableData] = useState([]);
 
@@ -32,16 +35,17 @@ const TotalReferral = () => {
         identifier: storedResponse.user.identifier,
       };
       try {
-        const response = await axios.post(
-          `https://cbb7-110-224-92-238.ngrok-free.app/user/referrals`,
-          body
-        );
+        setLoading(true);
+        const response = await axios.post(`${Domain}/user/referrals`, body);
         console.log(response.data);
         if (response.data.referredto !== "No referrals yet") {
           setTableData(response.data.referredto);
         }
       } catch (error) {
         console.log("Referral failed", error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -73,6 +77,8 @@ const TotalReferral = () => {
             </tbody>
           </table>
         </div>
+      ) : loading ? (
+        <LoaderCircle className="animate-spin text-white" />
       ) : (
         <div className="text-lg font-bold text-white">No Referral yet</div>
       )}
