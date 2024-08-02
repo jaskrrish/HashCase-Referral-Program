@@ -1,4 +1,3 @@
-import React from "react";
 import hashCaseLogo from "../../public/hashcaselogo.png";
 import { Copy } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";

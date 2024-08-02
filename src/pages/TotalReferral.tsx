@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 interface User {
@@ -40,8 +40,8 @@ const TotalReferral = () => {
         if (response.data.referredto !== "No referrals yet") {
           setTableData(response.data.referredto);
         }
-      } catch (error: any) {
-        console.log("Referral failed", error.message);
+      } catch (error) {
+        console.log("Referral failed", error);
       }
     };
     fetchData();
@@ -63,9 +63,13 @@ const TotalReferral = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-200">jas</td>
-              </tr>
+              {tableData.map((referral, index) => (
+                <tr key={index}>
+                  <td className="py-2 px-4 border-b border-gray-200">
+                    {referral}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -42,9 +42,8 @@ const Signup = () => {
       setTimeout(() => {
         router("/referral");
       }, 5000);
-    } catch (error: any) {
-      console.log("Signup failed", error.message);
-      notify(error.message);
+    } catch (error) {
+      console.log("Signup failed", error);
     }
   };
   return (
